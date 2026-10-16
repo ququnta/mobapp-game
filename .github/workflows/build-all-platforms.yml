@@ -71,8 +71,10 @@ jobs:
 
   Build-IOS:
     # Best-effort: RoboVM (MobiVM 2.3.22) is unmaintained and may break with
-    # newer Xcode on GitHub runner images; keep continue-on-error until stable
-    runs-on: macos-14
+    # newer Xcode on GitHub runner images; keep continue-on-error until stable.
+    # macos-13 (Intel) is the oldest available image: Temurin JDK 8 has no
+    # macOS arm64 builds, so arm64 images (macos-14/15) cannot be used here.
+    runs-on: macos-13
     continue-on-error: true
     steps:
       - name: Check out repository code
